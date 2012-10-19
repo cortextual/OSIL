@@ -8,3 +8,7 @@
 .svn/
 target/
 deployments/
+
+# IntelliJ IDEA project metadata
+*.iml
+.idea
