@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.osintegrators</groupId>
 	<artifactId>example</artifactId>
-	<name>abc</name>
+	<name>granny</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -189,7 +189,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<warName>abc</warName>
+					<warName>granny</warName>
 				</configuration>
 			</plugin>
 			<plugin>
