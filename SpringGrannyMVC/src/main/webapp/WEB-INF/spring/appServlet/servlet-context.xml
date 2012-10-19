@@ -8,7 +8,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	<beans:import resource="classpath:/META-INF/spring/app-context.xml"/> 
+	<beans:import resource="classpath:/META-INF/spring/app-context.xml"/>
+    <beans:import resource="classpath:/META-INF/spring/db-context.xml"/>
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
