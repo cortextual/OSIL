@@ -2,12 +2,20 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
    version="1.0">
-	<persistence-unit name="application" transaction-type="RESOURCE_LOCAL">
-  	  <provider>org.hibernate.ejb.HibernatePersistence</provider>
-	  <jta-data-source>java:/DefaultDS</jta-data-source>
-      <properties>
-         <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
-         <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
-      </properties>
-   </persistence-unit>
+    <persistence-unit name="test-application" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <!--
+             Explicitly list all entities here. This is needed because we have effectively two persistence
+             units - "application" (src/main/resources/META-INF/persistence.xml) and
+             "test-application" (src/test/resources/META-INF/persistence.xml).
+
+             TODO get rid of persistence.xml entirely using Spring 3.1's new feature for this.
+        -->
+        <class>com.osintegrators.example.Address</class>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+        </properties>
+    </persistence-unit>
 </persistence>
