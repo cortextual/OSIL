@@ -20,6 +20,9 @@ import org.springframework.test.context.transaction.AfterTransaction;
 import org.springframework.test.context.transaction.BeforeTransaction;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 /**
  * @author acoliver
  *
@@ -28,6 +31,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 public class TestAddressService {
+    @PersistenceContext
+    EntityManager em;
+
 	@Autowired
 	AddressService addressService;
 
@@ -75,6 +81,8 @@ public class TestAddressService {
 		assertEquals(expectedAddress,result.getAddress());
 		assertEquals(expectedPhone,result.getPhone());
 		assertEquals(expectedEmail,result.getEmail());
+
+        em.flush();
     }
 	
 	@Test
@@ -123,6 +131,8 @@ public class TestAddressService {
 		addressService.deleteAddress(result);
 		result = addressService.getAddressByName(expectedName);
 		assertNull("there should be no Lloyd Bentsen after the delete", result);
+
+        em.flush();
 	}
 
 	private Address createAddressObject(String name, String address,
