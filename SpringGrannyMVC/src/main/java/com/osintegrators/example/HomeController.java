@@ -62,14 +62,14 @@ public class HomeController {
 		logger.debug(old == null ? "old == null" : "old != null");
 		
 		Address add = old != null ? old : new Address(name, address, phone, email);
-		service.createAddress(add);
+		service.save(add);
 		
 		addModelElements(model);
 		model.addAttribute("status","created");
 		
 		return "home";
 	}
-	
+
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(Model model, @RequestParam String name) {

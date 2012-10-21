@@ -12,7 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.osintegrators.example">
-		<level value="info" />
+		<level value="DEBUG" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -31,6 +31,10 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
+
+    <logger name="org.hibernate.SQL">
+        <level value="DEBUG" />
+    </logger>
 
 	<!-- Root Logger -->
 	<root>
