@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,7 +48,7 @@ public class TestAddressService {
 
     public void verifyNoDataInAddressTable() {
         List<Address> allAddresses = addressService.getAllAddresses();
-        Assert.assertEquals("there should not be any addresses in the database", 0, allAddresses.size());
+        assertEquals("there should not be any addresses in the database", 0, allAddresses.size());
     }
 
 	/** 
