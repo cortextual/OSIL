@@ -59,7 +59,7 @@ public class HomeController {
 			old.setEmail(email);
 		}
 		
-		logger.debug(old == null ? "old -= null" : "old != null");
+		logger.debug(old == null ? "old == null" : "old != null");
 		
 		Address add = old != null ? old : new Address(name, address, phone, email);
 		service.createAddress(add);
