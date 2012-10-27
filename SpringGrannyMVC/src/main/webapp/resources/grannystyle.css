@@ -1,6 +1,11 @@
 body {
 	font-family: Arial, Helvetica;
 	}
+
+#search {
+    text-align: right;
+}
+
 #outer {
 	background-color:#aaa;
 	position:absolute;
@@ -42,7 +47,7 @@ body {
 #listEntry{
 	position:absolute;
 	right:50px;
-	top:90px;
+	top:120px;
 	width:300px;
 }
 #addressList {
@@ -55,6 +60,13 @@ body {
 	bottom:50px;
 	left:300px;
 }
+
+#searchEntry {
+    position: absolute;
+    bottom: 172px;
+    left: 311px;
+}
+
 #saveButton,#deleteButton{
 	width:100px;
 }
