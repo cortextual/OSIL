@@ -1,5 +1,6 @@
 package com.osintegrators.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -84,8 +85,25 @@ public class HomeController {
 		
 		return "home";
 	}	
-	
-	private void addModelElements(Model model) {
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String search(Model model, @RequestParam String query) {
+        if (query != null && !query.trim().equals("")) {
+            List<Address> searchResults = service.fullTextSearch(query);
+            model.addAttribute("searchResults", searchResults);
+        } else {
+            model.addAttribute("searchResults", new ArrayList<Address>());
+        }
+        return "searchResults";
+    }
+
+    @RequestMapping(value = "/searchForm", method = RequestMethod.GET)
+    public String searchForm(Model model) {
+        return "searchForm";
+    }
+
+
+    private void addModelElements(Model model) {
 		List<Address> addresses = service.getAllAddresses();
 		model.addAttribute("addresses", addresses);
 	}

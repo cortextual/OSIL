@@ -48,6 +48,13 @@
 </h2>
 
 
+<div id="search">
+    <form id="searchForm" name="searchForm" method="GET" action="search">
+        <input id="query" name="query" size="30" />
+        <input type="submit" value="Search" />
+        <a href="<c:url value='/searchForm'/>">Advanced Search</a>
+    </form>
+</div>
 
 <div id="content">
 	<form id="addressForm" name="addressForm" method="POST" action="">
