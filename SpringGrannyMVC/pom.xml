@@ -11,7 +11,8 @@
 		<java-version>1.6</java-version>
 		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
 		<org.springframework.data-version>1.0.3.RELEASE</org.springframework.data-version>
-		<org.hibernate.version>3.6.0.Final</org.hibernate.version>
+		<org.hibernate.version>3.6.7.Final</org.hibernate.version>
+        <hibernate.search.version>3.4.2.Final</hibernate.search.version>
 		<tomcat.jdbc.pool.version>1.0.9.3</tomcat.jdbc.pool.version>
 		<org.hsqldb-version>2.2.8</org.hsqldb-version>
 		<org.aspectj-version>1.6.9</org.aspectj-version>
@@ -28,7 +29,37 @@
              <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
              <url>http://repository.springsource.com/maven/bundles/external</url>
         </repository>
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Maven Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+            <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
 	</repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Maven Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -61,7 +92,13 @@
    			<groupId>org.springframework.data</groupId>
    			<artifactId>spring-data-jpa</artifactId>
    			<version>${org.springframework.data-version}</version>
-		</dependency>	
+		</dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search</artifactId>
+            <version>${hibernate.search.version}</version>
+        </dependency>
 		
 		<dependency>
 			<groupId>org.hibernate</groupId>
