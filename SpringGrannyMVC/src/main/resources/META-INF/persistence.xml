@@ -15,6 +15,10 @@
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.search.default.directory_provider" value="filesystem" />
+            <!-- TODO figure out a better way to configure this more flexibly -->
+            <property name="hibernate.search.default.indexBase"
+                      value="/tmp/granny_lucene_indexes" />
         </properties>
     </persistence-unit>
 </persistence>
