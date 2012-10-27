@@ -17,4 +17,5 @@ public interface AddressService {
             String email, boolean emailExact,
             String phone, boolean phoneExact);
 
+    List<Address> fullTextSearch(String stringToMatch);
 }

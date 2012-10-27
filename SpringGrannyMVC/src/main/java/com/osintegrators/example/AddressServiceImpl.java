@@ -1,14 +1,19 @@
 package com.osintegrators.example;
 
 import java.util.List;
+
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 @Service
+@Transactional
 public class AddressServiceImpl implements AddressService {
 
 	@Autowired
@@ -148,6 +153,32 @@ public class AddressServiceImpl implements AddressService {
         }
 
         return q.getResultList();
+    }
+
+    /**
+     * Do a full-text search on the Address entity.
+     *
+     * This is based on the Example 1.9 of the Hibernate Search 3.4 reference documentation.
+     *
+     * @param stringToMatch what to search for
+     * @return a list of search results
+     */
+    @Override
+    public List<Address> fullTextSearch(String stringToMatch) {
+        FullTextEntityManager ftem = org.hibernate.search.jpa.Search.getFullTextEntityManager(em);
+
+        // build up a Lucene query
+        QueryBuilder qb = ftem.getSearchFactory().buildQueryBuilder().forEntity(Address.class).get();
+        org.apache.lucene.search.Query luceneQuery = qb
+                .keyword()
+                .onFields("name", "address", "phone", "email")
+                .matching(stringToMatch.toLowerCase())
+                .createQuery();
+
+        // wrap the Lucene query in a JPA query
+        Query jpaWrappedQuery = ftem.createFullTextQuery(luceneQuery, Address.class);
+
+        return jpaWrappedQuery.getResultList();
     }
 
 }
