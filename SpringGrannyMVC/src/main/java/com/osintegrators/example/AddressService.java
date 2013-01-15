@@ -4,12 +4,12 @@ import java.util.List;
 
 public interface AddressService { 
 
-	void createAddress(Address address);
+    void createAddress(Address address);
 
-	Address getAddressByName(String expectedName);
+    Address getAddressByName(String expectedName);
 
-	void deleteAddress(Address result);
+    void deleteAddress(Address result);
 
-	List<Address> getAllAddresses();
+    List<Address> getAllAddresses();
 
 }
